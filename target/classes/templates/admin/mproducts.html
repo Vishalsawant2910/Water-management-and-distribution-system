@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/admin/base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Product Page</title>
+</head>
+<body>
+	<section>
+	<h1>Welcome Admin</h1>
+	
+	<div class="text-center">
+	<a th:href="@{/admin/addProductAdmin}" href="#" class="btn btn-success">Add Product</a>
+	<button type="button" class="btn btn-outline-primary"
+						style="padding: 8px 25px"		 onclick="history.back()">Back</button>
+	</div>
+	<hr>
+	
+	<table class="table">
+	
+		 <thead class="thead-light">
+		 <tr>
+		 		<th scope="col">SN</th>
+		 		<th scope="col">Product Name</th>
+		 		<th scope="col">Quantity</th>
+		 		<th scope="col">Price</th>
+		 		<th scope="col">Description</th>
+		 		<th scope="col">Delete</th>
+		 		<th scope="col">Update</th>
+		 </tr>
+		 </thead>
+		 <tbody>
+		    <tr th:each="p : ${products}">
+              <td th:text="${p.id}"></td>
+              <td th:text="${p.productName}"></td>
+              <td th:text="${p.qtyInLtr}"></td>
+              <td th:text="${p.price}"></td>
+              <td th:text="${p.description}"></td>
+              <td ><a th:href="@{/admin/deleteProduct/{id}(id=${p.id})}" href="#" class="btn btn-outline-danger">Delete</a></td>
+              <td ><a th:href="@{/admin/updateProduct/{id}(id=${p.id})}" href="#" class="btn btn-outline-success">Update</a></td>
+            </tr>
+		    	
+		    	
+		    	
+		    	
+		  
+		 
+		 </tbody>
+	</table>
+	
+	
+	
+	</section>
+</body>
+</html>

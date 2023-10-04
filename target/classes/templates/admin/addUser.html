@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/admin/base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product Page</title>
+</head>
+<body>
+	<section>
+															<!-- th:object is imp for mapping -->
+		<form action="" th:action="@{/admin/adding_user}" method="post" th:object="${user}">
+			<div class="container" >
+			   <div class="row">
+			   <div class="col-md-6 offset-md-3">
+			   <div class="my-card">
+				
+				<div th:if="${session.message}" th:classappend="${session.message.type}"  class="alert" >
+					<p th:text="${session.message.content}"></p>
+					<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+	            </div>
+				
+				<h1>Sign Up</h1>
+				
+				<hr>
+					<!-- Name Field-->
+					<!-- name="name" must same as pojo entity -->
+					
+				    <div class="form-group">
+						<label for="username" class="form-label">User Name</label> 
+								<input name="userName"   
+								type="text" 
+								class="form-control"
+								id="username" 
+								aria-describedby="emailHelp"
+								placeholder="Enter Name"
+								required
+								th:value="${user.userName}"
+								>
+					</div>	
+					
+					<!-- Email Field -->
+				    <div class="form-group">
+						<label for="email_field" class="form-label">Email</label> 
+								<input name="email"
+								type="email" 
+								class="form-control"
+								id="email_field" 
+								aria-describedby="emailHelp"
+								placeholder="Enter Email"
+								required
+								th:value="${user.email}"
+								>
+					</div>				
+					
+					<!-- Password Field-->
+				    <div class="form-group">
+						<label for="password_field" class="form-label">Password</label> 
+								<input name="password"
+								type="password" 
+								class="form-control"
+								id="password_field" 
+								aria-describedby="emailHelp"
+								placeholder="Enter Password"
+								required>
+								<!--pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" 
+								title="Must contain at least one number and one uppercase and lowercase letter, and at least 6 or more characters"-->
+								
+					</div>	
+					
+					<!-- Mobile Field-->
+					<div class="form-group">
+						<label for="username" class="form-label">Mobile</label> 
+								<input name="mobile"   
+								type="text" 
+								class="form-control"
+								id="mobile" 
+								aria-describedby="emailHelp"
+								placeholder="Enter Mobile NO"
+								pattern="((?=.*[0-9]).{10,}" 
+								title="Must be 10 digit no"
+								required
+								th:value="${user.mobile}"
+								>
+					</div>	
+					
+					<!-- Address Field-->
+					<div class="form-group">
+						<label for="address" class="form-label">Address</label> 
+								<input name="address"   
+								type="text" 
+								class="form-control"
+								id="mobile" 
+								aria-describedby="emailHelp"
+								placeholder="Enter Address"
+								title="Must contain Pincode"
+								required
+								th:value="${user.address}"
+								>
+					</div>	
+				
+				<div>
+				<label> <input type="checkbox"
+					 name="remember" style="margin-bottom: 15px">
+					Remember me
+				</label>
+				</div>
+
+				<div class="clearfix">
+					<button type="submit" class="btn btn-primary">Update User</button>
+					<button type="reset" class="btn btn-warning">Reset</button>
+					
+				</div>
+
+				</div>
+				</div>
+				</div>
+				
+			</div>
+		</form>
+	</section>
+</body>
+</html>

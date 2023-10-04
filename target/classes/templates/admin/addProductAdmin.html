@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/admin/base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product Page</title>
+</head>
+<body>
+	<section>
+															<!-- th:object is imp for mapping -->
+		<div class="card mr-3 ml-3 ">
+			<div class="card-body">
+				<h1 class="text-center" style="color:black">Add Product</h1>
+				<div class="container-fluid mt-1">
+					<div class="row">
+						<div class="col-md-8 offset-md-2">
+							
+							<form th:action="@{/admin/adding_product}" method="post" th:object="${product}" enctype="multipart/form-data" class="mt-2">
+							<!-- Product id -->
+							
+								
+								<input  type="hidden" name="id" th:field="*{id}">
+							
+							
+							<!-- Product name -->
+							<div class="form-group">
+								
+								<input  type="text"  name="productName" id="productName" placeholder="Enter Name here" class="form-control" required />
+							</div>
+							
+							
+							<!-- Quantity -->
+							<div class="form-group mt-3">
+								
+								<input  type="number" name="qtyInLtr" id="qtyInLtr" placeholder="Enter qty In Ltr" class="form-control" required />
+							</div>
+							
+							
+							<!-- Price --> 
+							
+					
+								<!-- discription -->
+								<div class="form-group mt-3">
+									<textarea id="mytextarea" rows="3" cols="5" name="description" placeholder="Enter Product description here" class="form-control" ></textarea>
+								</div>
+								
+								
+								<div class="container text-center">
+									<button type="submit" class="btn btn-outline-primary">Save Product</button>
+								</div>
+								
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</section>
+</body>
+</html>

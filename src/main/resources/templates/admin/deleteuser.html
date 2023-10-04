@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/admin/base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Success Page</title>
+</head>
+<body>
+<section>
+<div th:if="${session.success}" class="cotainer">
+	<div th:classappend="${'alert-'+session.success.type}" class="alert text-center" role="alert">
+	<span th:text="${session.success.content}"></span>
+	</div></div>
+	</section>
+</body>
+</html>

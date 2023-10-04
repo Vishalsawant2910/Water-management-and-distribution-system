@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/admin/base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Order Page</title>
+</head>
+<body>
+	<section>
+	<h1>Welcome Admin - Orders</h1>
+	
+	<div class="text-center">
+<!-- 	<a th:href="@{/admin/addOrdersAdmin}" href="#" class="btn btn-success">Add Orders</a> -->
+	<button type="button" class="btn btn-outline-primary"
+						style="padding: 8px 25px"		 onclick="history.back()">Return to Dashboard</button>
+	</div>
+	
+	
+	<hr>
+	
+	<table class="table">
+	
+		 <thead class="thead-light">
+		 <tr>
+		 		<th scope="col">Id</th>
+		 		<!-- <th scope="col">Product Id</th> -->
+		 		<th scope="col">User Id</th>
+		 		<!-- <th scope="col">Quantity</th> -->
+		 		<th scope="col">Total</th>
+		 		<th scope="col">Address</th>
+		 		<th scope="col">Date</th>
+		 		<th scope="col">Done/Delete</th>
+		 		<th scope="col">Update</th>
+		 </tr>
+		 </thead>
+		 <tbody>
+		    <tr th:each="o : ${orders}">
+              <td th:text="${o.id}"></td>
+             <!--  <td th:text="${o.product_id}"></td> -->
+              <td th:text="${o.user_id}"></td>
+             <!--  <td th:text="${o.quantity}"></td> -->
+              <td th:text="${o.total}"></td>
+              <td th:text="${o.shippingAddress}"></td>
+              <td th:text="${o.shippingDate}"></td>
+              <td ><a th:href="@{/admin/deleteOrder/{id}(id=${o.id})}" href="#" class="btn btn-outline-danger">Delete</a></td>
+              <td ><a th:href="@{/admin/updateOrder/{id}(id=${o.id})}" href="#" class="btn btn-outline-success">Update</a></td>
+            </tr>
+		    	
+	
+		 
+		 </tbody>
+	</table>
+	
+	
+	
+	</section>
+</body>
+</html>

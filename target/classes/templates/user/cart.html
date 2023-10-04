@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="/user/base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>cart</title>
+</head>
+<body>
+	<section>
+	<div th:if="(${cart.size()}==0)" class="cotainer">
+	<div id="jumbo"class="jumbotron text-center text-black">
+	<h1>Cart is Empty</h1>
+	<br>
+	<h3>Add Products In Cart</h3>
+	</div>
+	</div>
+		<div th:if="(${cart.size()}>0)">
+			<table>
+
+				<thead class="thead-light">
+					<tr>
+						<th style="padding: 15px 100px;" scope="col"></th>
+						<th style="padding: 15px 100px;" scope="col">Product Name</th>
+						<!-- <th style="padding: 15px 100px;" scope="col">Quantity</th> -->
+						<th style="padding: 5px 50px;" scope="col">Price</th>
+						<th style="padding: 5px 50px;" scope="col">Quantity</th>
+						<!-- 	<th style="padding: 15px 100px;" scope="col">Total Amount</th> -->
+
+
+
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr th:each="item, iStat: ${cart}">
+						<!-- <td style="padding: 15px 100px ;" th:text="${item.id}"></td> -->
+
+						<td style="padding: 15px 100px;"><img
+							th:src="@{${'/'+item.image_name}}" width="160" height="150"></td>
+
+						<td style="padding: 15px 100px;" th:text="${item.productName}"></td>
+						<td style="padding: 5px 50px;" th:text="${item.price}"></td>
+						<td style="padding: 5px 50px;">
+							<!-- <input type="number" style="width:40%;" name="one" onchange="calTotal()" class="form" th:value="${item.quantityInCart}" min="1" /></td> -->
+							<!-- <td th:text="${item.qtyInLtr}"></td> --> <a
+							th:href="@{/user/addQuantity/{id}(id=${iStat.index})}" href="#"
+							class="btn"> <i class="fa fa-plus" style="font-size: 24px"></i></a>
+							<input type="number" style="width: 20%;" readonly
+							th:value="${item.quantityInCart}"> <a
+							th:href="@{/user/minusQuantity/{id}(id=${iStat.index})}" href="#"
+							class="btn"> <i class="fa fa-minus" style="font-size: 24px"></i></a>
+						<td><a th:href="@{/user/removeItem/{id}(id=${iStat.index})}"
+							href="#" class="btn btn-danger">Remove item </a></td>
+
+
+
+
+					</tr>
+
+
+				</tbody>
+			</table>
+			
+			<div class="text-center">
+			<form th:action="@{/user/adding_orders}" method="post"
+						th:object="${orders}" enctype="multipart/form-data" class="mt-2">
+			
+				<h2>Amount Payable</h2>
+				<h4>
+					&#8377 <span th:text="${amount}"></span>&nbsp /-
+				</h4>
+				
+				
+
+				<div  >
+					<label > <input type="text" name="shippingAddress" id="shippingAddress"
+							placeholder="Enter Address" class="form-control" required />
+					</label>
+					
+						
+				</div>
+
+				<div>
+							<label > 	<input type="datetime-local" name="shippingDate" id="shippingDate"
+						placeholder="Enter Date" class="form-control" required />
+						</label>
+				</div>
+				<!-- <div class="form-group">
+								
+								<input  type="number"  name="user_id" id="productId" placeholder="Enter user Id here" class="form-control" required th:value="${user.userId}"/>
+							</div> -->
+				<button th:if="(${cart.size()}>0)" type="submit" class="btn btn-outline-primary">Place Order</button>
+
+				<!-- <a th:href="@{/user/thanks}" class="btn btn-success">Place Order</a> -->
+		</form>
+		</div>
+		<br> <br>
+
+
+	</div>
+	
+	</section>
+	<script type="text/javascript">
+		function calTotal() {
+			alert("hello world")
+		}
+	</script>
+</body>
+</html>
+
+

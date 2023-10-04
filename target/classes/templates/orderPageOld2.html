@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/user/base::Layout(~{::section})">
+
+<head>
+    
+    <title>Order Page</title>
+</head>
+
+<body>
+    <section>
+
+        <div id="jumbo2" class="jumbotron text-center text-white">
+            <h1>ORDER HERE</h1>
+            <h3>Place Your Order and get products at your doorstep.</h3>
+        </div>
+
+        <div id="product" class="container ">
+            <div th:each="p : ${products}">
+                <div id="row1" class="row">
+                   <!--  <div class="col-xs-6 col-md-6"> -->
+
+                    <!--     First product box start here
+                        <div class="prod-info-main prod-wrap clearfix">
+
+                            <div class="row">
+
+                                <div class="col-md-5 col-sm-12 col-xs-12">
+
+                                    <div class="product-image">
+
+                                        <img th:src="@{${p.image_name}}" width="160" height="150">
+
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-5 col-sm-12 col-xs-12">
+
+                                    <div class="product-deatil">
+
+                                        <h5 class="name" th:text="${p.productName}">
+
+                                            
+
+                                        </h5>
+
+                                        <h6 class="price-container">
+
+                                            <span>Rs.</span><span th:text="${p.price}"></span>
+
+                                        </h6>
+                                    </div>
+
+                                    <div class="description">
+
+                                        <p th:text="${p.description}"> </p>
+
+                                    </div>
+
+                                    <div class="product-info smart-form">
+
+                                        <div class="row">
+
+                                            <div class="col-md-12">
+                                                <a th:href="@{user/addToCart/{id}(id=${p.Id})}" href="#"
+                                                    class="btn btn-success">add to cart</a>
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div> -->
+                 <div class="row no-gutters" style="border: #0d22aa solid 2px">
+              <div
+                class="col-sm-5 d-flex justify-content-center"
+                style="padding: 50px"
+              >
+                <img
+                  class=""
+                  style="
+                    max-width: 100%;
+                    
+                    border-radius: 5px;
+                  "
+                  th:src="@{${p.image_name}}"
+                  th:alt="${p.productName}"
+                />
+              </div>
+              
+              
+              
+              <div class="col-sm-7 d-flex justify-content-center">
+                <div class="card-body">
+                  <h3 class="card-title h3" th:text="${p.productName}"></h3>
+                  <h4>Price: € <span th:text="${p.price}"></span></h4>
+                  <p th:text="${p.description}"></p>
+                 
+                  <a
+                    href=""
+                    th:href="@{user/addToCart/{id}(id=${p.Id})}"
+                    class="btn btn-success"
+                    >Add to cart</a
+                  >
+                 <!--  <a th:href="@{user/addToCart/{id}(id=${p.Id})}" href="#"
+					class="btn btn-success">add to cart</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+            </div>
+            </div>
+<!--         </div> -->
+    </section>
+
+</body>
+
+</html>

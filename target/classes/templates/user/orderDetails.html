@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/user/base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>user Order Page</title>
+</head>
+<body>
+	<section>
+	<h1>Order Details</h1>
+	
+	
+	<!-- <a th:href="@{/user/addOrders}" class="btn btn-success">Add Orders</a> -->
+	
+	<hr>
+	
+	<table>
+
+				<thead class="thead-light">
+					<tr>
+						<th style="padding: 15px 100px;" scope="col"></th> 
+						<th style="padding: 15px 100px;" scope="col">Product Name</th>
+						<!-- <th style="padding: 15px 100px;" scope="col">Quantity</th> -->
+						<th style="padding: 5px 50px;" scope="col">Price</th>
+						<th style="padding: 5px 50px;" scope="col">Quantity</th>
+						<!-- 	<th style="padding: 15px 100px;" scope="col">Total Amount</th> -->
+
+
+
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr th:each="item, iStat: ${orderDetails}">
+						<!-- <td style="padding: 15px 100px ;" th:text="${item.id}"></td> -->
+
+						<td style="padding: 15px 100px;"><img
+							th:src="@{${'/'+item.product.image_name}}" width="160" height="150"></td>
+
+					<td style="padding: 15px 100px;" th:text="${item.product.productName}"></td>
+						<td style="padding: 5px 50px;" th:text="${item.product.price}"></td>
+						<td style="padding: 5px 50px;">
+							<input type="number" style="width:40%;"  readonly name="one" onchange="calTotal()" class="form" th:value="${item.quantity}" min="1" /></td>
+						
+					</tr>
+
+
+				</tbody>
+			</table>
+	
+	
+	
+	</section>
+</body>
+</html>

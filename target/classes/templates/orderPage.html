@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="/user/base::Layout(~{::section})">
+<head>
+
+    <!-- <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css"> -->
+<title>Order Page</title>
+</head>
+<body>
+	<section>
+
+		<div id="jumbo2" class="jumbotron text-center text-white">
+			<h1>ORDER HERE</h1>
+			<h3>Place Your Order and get products at your doorstep.</h3>
+		</div>
+
+		<div class=container>
+			<table class="table">
+
+				<!-- <thead class="thead-light">
+					<tr>
+						<th scope="col">Product Id</th>
+						<th scope="col">Product Image</th>
+						<th scope="col">Product Name</th>
+						<th scope="col">Price</th>
+						<th scope="col">Description</th>
+
+						<th scope="col">Place Order</th>
+
+
+					</tr>
+				</thead> -->
+				<tbody>
+					<tr th:each="p : ${products}">
+						<!-- <td th:text="${p.id}"></td> -->
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td></td>
+						<td><img th:src="@{${p.image_name}}" width="160"
+							height="150"></td>
+
+
+
+
+						<!-- <td th:text="${p.productName}"></td>
+						<td th:text="${p.price}"></td>
+						<td th:text="${p.description}"></td> -->
+
+						<td></td>	
+						<td>
+							<div class="col-sm-7 d-flex justify-content-center">
+								<div class="card-body">
+								  <h3 class="card-title h3" th:text="${p.productName}"></h3>
+								  <h4>Price: &#8377 <span th:text="${p.price}"></span></h4>
+								  <p th:text="${p.description}"></p>
+								 
+								  <a
+									href=""
+									th:href="@{user/addToCart/{id}(id=${p.Id})}"
+									class="btn btn-success"
+									>Add to cart</a
+								  >
+							</div>
+							</div>
+						</td>
+
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+		<!-- Table End Here-->
+
+	</section>
+</body>
+</html>

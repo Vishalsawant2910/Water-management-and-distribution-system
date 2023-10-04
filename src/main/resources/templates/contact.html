@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Home Page</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+	<section>
+		<div id="contact" class="jumbotron text-center text-white">
+			<h1>CONTACT US</h1>
+			<p>Get in Touch...
+			<div class="container">
+				<div class="content">
+					<div class="left-side">
+						<div class="address details">
+							<figure>
+					<img src="/images/location.png" alt="user profile"
+					title="user profile" width="50" height="50">
+							</figure>
+							<div class="topic">Address</div>
+							<div class="text-one">Pune</div>
+							<div class="text-two">Pashan_Aundh</div>
+						</div>
+						<div class="phone details">
+							<figure>
+					<img src="/images/telephone-call.png" alt="user profile"
+					title="user profile" width="50" height="50">
+							</figure>
+							
+							<div class="topic">Phone</div>
+							<div class="text-one">+91 9893 5647</div>
+							<div class="text-two">+91 3434 5678</div>
+						</div>
+						<div class="email details">
+							<figure>
+					<img src="/images/email.png" alt="user profile"
+					title="user profile" width="50" height="50">
+							</figure>
+
+							<div class="topic">Email</div>
+							<div class="text-one">homeadm941@gmail.com</div>
+							<div class="text-two">info.waterplant@gmail.com</div>
+						</div>
+					</div>
+					<div class="right-side">
+
+						<div class="topic-text2">Contact us</div>
+						<div class="topic-text">We're here to help and answer
+						 any question you might have.We look forward to hearing from you..</div>
+
+						<form action="#">
+							<div class="input-box">
+								<input type="text" placeholder="Enter your name">
+							</div>
+							<div class="input-box">
+								<input type="text" placeholder="Enter your email">
+							</div>
+
+							<a href="mailto:homeadm941@gmail.com"
+								class="btn btn-success pull-right" type="submit"
+								style="padding: 10px 50px">Send</a>
+
+
+
+							<button type="button" class="btn btn-outline-primary"
+								style="padding: 10px 50px" onclick="history.back()">Back</button>
+						</form>
+					</div>
+				</div>
+			</div>
+			</section>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="/admin/base::Layout(~{::section})">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin Customer Details Page</title>
+</head>
+<body>
+	<section>
+	<h1>List of Customers</h1>
+	
+	<div class="text-center">
+	<a th:href="@{/signup}" href="#" class="btn btn-success">Add Customer</a>
+	<button type="button" class="btn btn-outline-primary"
+						style="padding: 8px 25px"		 onclick="history.back()">Back</button>
+	</div>
+	<hr>
+	
+	<table class="table text-bold">
+	
+		 <thead class="thead-light">
+		 <tr>
+		 		<th scope="col">UserId</th>
+		 		<th scope="col">UserName</th>
+		 		<th scope="col">Mobile</th>
+		 		<th scope="col">Address</th>
+		 		<th scope="col">Delete</th>
+		 		<th scope="col">Update</th>
+		 </tr>
+		 </thead>
+		 <tbody >
+		    <tr th:each="p : ${users}">
+              <td th:text="${p.userId}"></td>
+              <td th:text="${p.userName}"></td>
+              <td th:text="${p.mobile}"></td>
+              <td th:text="${p.address}"></td>
+              <td ><a th:href="@{/admin/deleteUser/{id}(id=${p.userId})}" href="#" class="btn btn-outline-danger">Delete</a></td>
+              <td ><a th:href="@{/admin/updateUser/{id}(id=${p.userId})}" href="#" class="btn btn-outline-success">Update</a></td>
+            </tr>
+		    	
+		    	
+		    	
+		    	
+		  
+		 
+		 </tbody>
+	</table>
+	
+	
+	
+	</section>
+</body>
+</html>
